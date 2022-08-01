@@ -112,7 +112,8 @@ class RecallatK_binary(torch.nn.Module):
                 |
         """
         mat = preds[q_id]
-        mat = torch.stack([mat.view(-1,1) for _ in range(torch.numel(preds))],dim=1)
+        # mat = torch.stack([mat.view(-1,1) for _ in range(torch.numel(preds))],dim=1)
+        mat = mat.view(-1,1).expand(-1,torch.numel(preds))
         mat = preds.view(1,-1) - mat
         mat = sigmoid(mat,temp=anneal)
         mat = mat.sum(dim=1) # sigmoid rank

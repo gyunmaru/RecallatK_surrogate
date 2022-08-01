@@ -88,7 +88,7 @@ class RecallatK_binary(torch.nn.Module):
         self.k_vals = k_vals
         self.k_temperatures = k_temperatures
 
-    def forward(self, y_true, preds):
+    def forward(self, preds, y_true):
         batch_size = preds.shape[0]
         anneal = self.anneal
 

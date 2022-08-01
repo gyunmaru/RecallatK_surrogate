@@ -125,5 +125,6 @@ class RecallatK_binary(torch.nn.Module):
                 temp=self.k_temperatures[i]
             ).sum()/np.array(q_id).sum()
             recall += recall_
+        recall /= (i+1)
 
         return (1.-recall)

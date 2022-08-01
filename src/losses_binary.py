@@ -123,7 +123,7 @@ class RecallatK_binary(torch.nn.Module):
         for i,given_k in enumerate(self.k_vals) :
             recall_ = sigmoid(given_k - 1 - mat,
                 temp=self.k_temperatures[i]
-            ).sum().item()/q_id.sum().item()
+            ).sum().item()/np.arrray(q_id).sum()
             recall += recall_
 
         return (1.-recall)
